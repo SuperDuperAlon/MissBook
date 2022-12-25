@@ -1,6 +1,6 @@
-import { AboutPage } from '../cmps/about-cmp.jsx'
-import { BookIndex } from '../cmps/bookindex-cmp.jsx'
-import { Homepage } from '../cmps/Homepage-cmp.jsx'
+import { AboutPage } from '../views/about-cmp.jsx'
+import { BookIndex } from '../views/bookindex-cmp.jsx'
+import { Homepage } from '../views/Homepage-cmp.jsx'
 
 export function Home() {
     return (
