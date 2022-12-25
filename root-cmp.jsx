@@ -6,7 +6,7 @@ import { Homepage } from "./views/Homepage-cmp.jsx";
 
 
 export function App() {
-    const [page, setPage] = useState('home')
+    const [page, setPage] = useState('book')
     console.log('page is', page);
 
     return <section className="main-layout app">
