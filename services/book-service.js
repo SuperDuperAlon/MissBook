@@ -7,7 +7,10 @@ _createBooks();
 export const bookService = {
   query,
   remove,
+  get,
   getDefaultFilter,
+  getEmptyBook,
+  save
 };
 
 function query(filterBy = getDefaultFilter()) {
@@ -26,21 +29,24 @@ function query(filterBy = getDefaultFilter()) {
 }
 
 function get(bookId) {
-    return storageService.get(STORAGE_KEY, bookId)
-    // return axios.get(CAR_KEY, carId)
+  return storageService.get(STORAGE_KEY, bookId);
 }
 
 function remove(bookId) {
-    return storageService.remove(STORAGE_KEY, bookId)
+  return storageService.remove(STORAGE_KEY, bookId);
 }
 
-// function save(book) {
-//     if (car.id) {
-//         return storageService.put(STORAGE_KEY, book)
-//     } else {
-//         return storageService.post(STORAGE_KEY, book)
-//     }
-// }
+function save(book) {
+  if (book.id) {
+      return storageService.put(STORAGE_KEY, book)
+  } else {
+      return storageService.post(STORAGE_KEY, book)
+  }
+}
+
+function getEmptyBook(txt = "", minPrice = "") {
+  return { txt, minPrice };
+}
 
 function getDefaultFilter() {
   return { txt: "", maxPrice: "" };

@@ -1,28 +1,36 @@
-const { useState } = React
+const { useState } = React;
+const Router = ReactRouterDOM.HashRouter;
+const { Route, Routes } = ReactRouterDOM;
 
 import { AboutPage } from "./views/about-cmp.jsx";
 import { BookIndex } from "./views/bookindex-cmp.jsx";
 import { Homepage } from "./views/Homepage-cmp.jsx";
-
+import { AppHeader } from "./cmps/app-header.jsx";
+import { BookEdit } from "./cmps/BookEdit-cmp.jsx";
+import { BookDetails } from "./cmps/BookDetails-cmp.jsx";
+import { UserMsg } from "./cmps/userMsg-cmp.jsx";
 
 export function App() {
-    const [page, setPage] = useState('book')
-    console.log('page is', page);
+  const [page, setPage] = useState("book");
+  console.log("page is", page);
 
-    return <section className="main-layout app">
-        <header className="app-header full main-layout">
-            <h1>Miss Book</h1>
-            <nav className="app-nav">
-                <a href="#" onClick={() => setPage('home')}>Home</a> | 
-                <a href="#" onClick={() => setPage('about')}>About</a> | 
-                <a href="#" onClick={() => setPage('book')}>Book</a>
-            </nav>
-        </header>
+  return (
+    <Router>
+      <section className="main-layout app">
+        <AppHeader setPage={{ setPage }} />
 
-        <main>
-            {page === 'home' && <Homepage />}
-            {page === 'about' && <AboutPage />}
-            {page === 'book' && <BookIndex />}
+        <main className="full main-layout">
+          <Routes>
+            <Route element={<Homepage />} path="/" />
+            <Route element={<AboutPage />} path="/about" />
+            <Route element={<BookEdit />} path="/book/edit" />
+            <Route element={<BookEdit />} path="/book/edit/:bookId" />
+            <Route element={<BookDetails />} path="/book/:bookId" />
+            <Route element={<BookIndex />} path="/book" />
+          </Routes>
         </main>
-    </section>
+        <UserMsg />
+      </section>
+    </Router>
+  );
 }

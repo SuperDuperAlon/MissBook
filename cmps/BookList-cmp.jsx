@@ -1,18 +1,21 @@
-import {BookPreview} from './BookPreview-cmp.jsx'
+const { Link } = ReactRouterDOM
 
-export function BookList({books, onSelectBook, onRemoveBook}) {
+import { BookPreview } from "./BookPreview-cmp.jsx";
 
+export function BookList({ books, onRemoveBook }) {
+    console.log(books);
+  return (
 
-    console.log(books)
-    return <ul className='book-list'>
-        {books.map(book => 
-            <li key={book.id}>
-                <BookPreview book={book}/>
-                <div>
-                    <button onClick={() => onRemoveBook(book.id)}>Remove</button>
-                    <button onClick={() => onSelectBook(book.id)}>Select Book</button>
-                </div>
-            </li>
-            )}
+    <ul className="book-list">
+      {books.map((book) => (
+        <li key={book.id}>
+          <BookPreview book={book} />
+          <div>
+            <button onClick={() => onRemoveBook(book.id)}>Remove</button>
+            <Link to={`/book/${book.id}`}>Select Book</Link>
+          </div>
+        </li>
+      ))}
     </ul>
+  );
 }
