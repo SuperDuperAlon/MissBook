@@ -15,7 +15,6 @@ export function BookIndex() {
 
   useEffect(() => {
     loadBooks();
-    console.log(books);
   }, [filterBy]);
 
   function loadBooks() {
@@ -35,13 +34,11 @@ export function BookIndex() {
         showSuccessMsg("Car removed");
       })
       .catch((err) => {
-        console.log("Had issues removing", err);
         showErrorMsg("Could not remove car, try again please!");
       });
   }
 
   if (!books) return <h1>Loading</h1>;
-  console.log(books);
   return (
     <section className="book-index">
       <div>

@@ -1,4 +1,3 @@
-// import { useEffect, useState} from "react";
 import { bookService } from "../services/book-service.js";
 
 const { useState, useEffect, useRef } = React;
@@ -35,7 +34,6 @@ export function BookFilter({ onSetFilter }) {
 
   return (
     <section className="BookFilter">
-      <h2>This is the car filter</h2>
       <form onSubmit={onSubmitFilter}>
         <label htmlFor="title">Title:</label>
         <input

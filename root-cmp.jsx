@@ -9,15 +9,14 @@ import { AppHeader } from "./cmps/app-header.jsx";
 import { BookEdit } from "./cmps/BookEdit-cmp.jsx";
 import { BookDetails } from "./cmps/BookDetails-cmp.jsx";
 import { UserMsg } from "./cmps/userMsg-cmp.jsx";
+import {BookAdd } from './cmps/google-book-add-cmp.jsx'
 
 export function App() {
-  const [page, setPage] = useState("book");
-  console.log("page is", page);
 
   return (
     <Router>
       <section className="main-layout app">
-        <AppHeader setPage={{ setPage }} />
+        <AppHeader />
 
         <main className="full main-layout">
           <Routes>
@@ -27,6 +26,7 @@ export function App() {
             <Route element={<BookEdit />} path="/book/edit/:bookId" />
             <Route element={<BookDetails />} path="/book/:bookId" />
             <Route element={<BookIndex />} path="/book" />
+            <Route element={<BookAdd/>} path="/bookAdd"/>
           </Routes>
         </main>
         <UserMsg />

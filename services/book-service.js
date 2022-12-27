@@ -8,9 +8,11 @@ export const bookService = {
   query,
   remove,
   get,
+  save,
   getDefaultFilter,
   getEmptyBook,
-  save
+  getNextBookId,
+  getPrevBookId,
 };
 
 function query(filterBy = getDefaultFilter()) {
@@ -32,20 +34,36 @@ function get(bookId) {
   return storageService.get(STORAGE_KEY, bookId);
 }
 
+function getNextBookId(bookId) {
+  return storageService.query(STORAGE_KEY).then((books) => {
+    var idx = books.findIndex((book) => book.id === bookId);
+    if (idx === books.length - 1) idx = -1;
+    return books[idx + 1].id;
+  });
+}
+
+function getPrevBookId(bookId) {
+  return storageService.query(STORAGE_KEY).then((books) => {
+    var idx = books.findIndex((book) => book.id === bookId);
+    if (idx === -1) idx = books.length - 1;
+    return books[idx - 1].id;
+  });
+}
+
 function remove(bookId) {
   return storageService.remove(STORAGE_KEY, bookId);
 }
 
 function save(book) {
   if (book.id) {
-      return storageService.put(STORAGE_KEY, book)
+    return storageService.put(STORAGE_KEY, book);
   } else {
-      return storageService.post(STORAGE_KEY, book)
+    return storageService.post(STORAGE_KEY, book);
   }
 }
 
-function getEmptyBook(txt = "", minPrice = "") {
-  return { txt, minPrice };
+function getEmptyBook(title = "", amount = "") {
+  return { title: "", amount: "" };
 }
 
 function getDefaultFilter() {
