@@ -3,7 +3,7 @@ const { Link, NavLink } = ReactRouterDOM
 export function AppHeader({ setPage }) {
 
     return <header className="app-header full main-layout">
-        <div className="header-container">
+        <div className="header-container mid-col">
             <h1>Miss Book</h1>
             <nav className="app-nav">
                 <NavLink to="/">Home</NavLink> |

@@ -1,9 +1,16 @@
 .main-layout {
-  margin: 0 auto;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
+display: grid;
+grid-template-columns: 40px auto 40px;
 }
 
+.full {
+  grid-column: 1/-1;
+
+}
+
+.mid-col {
+  grid-column: 2;
+}
 .container {
   max-width: 800px;
   padding: 1em;
@@ -13,3 +20,4 @@
 .book-list {
   background-color: aqua;
 }
+

@@ -15,10 +15,10 @@ export function App() {
 
   return (
     <Router>
-      <section className="main-layout app">
+      <section className="main-layout full">
         <AppHeader />
 
-        <main className="full main-layout">
+        <main className="mid-col main-layout">
           <Routes>
             <Route element={<Homepage />} path="/" />
             <Route element={<AboutPage />} path="/about" />

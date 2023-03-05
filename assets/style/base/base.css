@@ -7,7 +7,7 @@ html {
 
 body {
   margin: 0;
-  color: var(--gray3);
+  font-family: 'Assistant', sans-serif;
 }
 
 h1,
@@ -15,9 +15,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: .5em 0 .5em;
-  font-family: 'Assistant', sans-serif;
+  /* font-family: 'Assistant', sans-serif; */
 }
 
 p {
@@ -37,6 +38,20 @@ embed,
 video,
 object {
   max-width: 100%
+}
+
+button {
+  cursor: pointer;
+  margin: 0.5em;
+  border: 0;
+  padding: 0.5em 0.8em;
+  border-radius: 4px;   
+}
+
+button:hover {
+  background-color: var(--clr2);
+  color: white;
+  transition: .3s;
 }
 
 /* Simple and useful CSS Debugging Technique */
